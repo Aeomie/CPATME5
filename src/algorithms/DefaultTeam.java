@@ -46,12 +46,13 @@ public class DefaultTeam {
 		System.out.println("je suis dans CalculSteiner");
 		
 		// setting up the MST
-		kruskal k = new kruskal();
-		ArrayList<Edge> steinerEdge = k.kruskal(hitPoints);
-		Tree2D steinerTree=k.edgesToTree(steinerEdge,hitPoints.get(0) );
+		Kruskal k = new Kruskal();
+		ArrayList<Edge> mstEdges = k.kruskal(hitPoints);
+
+		Tree2D steinerTree= k.edgesToTree(mstEdges, hitPoints.get(0));
 
 		int[][] paths = calculShortestPaths(points, edgeThreshold);
-
+		
 		Tree2D newSteinerTree = Steiner(paths, steinerTree, points);
 
 		return newSteinerTree;
